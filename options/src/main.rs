@@ -11,6 +11,14 @@ fn obtener_valor(bandera: bool) -> Option<String> {
         None
     }
 }
+// options y structs
+#[derive(Debug)]
+struct User {
+    username: String,
+    password: String,
+    email: String,
+    edad: Option<u32>
+}
 fn main() {
    // enum Option -> Si existe o no algún valor.
    // enum Result -> Errores -> panic!
@@ -32,6 +40,22 @@ fn main() {
     // println!("El valor es: {}", valor);
 
         // expect() permite mostrar un mensaje en el panic
-    let valor = resultado.expect("Se esperaba un String");
-    println!("El valor es: {}", valor);
+    // let valor = resultado.expect("Se esperaba un String");
+    // println!("El valor es: {}", valor);
+
+    // options y structs
+    let usuario1 = User{
+        username: String::from("jaz"),
+        password: String::from("pass"),
+        email: String::from("jaz@gmail.com"),
+        edad: None //Some(26)
+    };
+
+    println!("El usuario es: {:?}", usuario1);
+
+    // let edad = usuario1.edad.unwrap();
+    match usuario1.edad {
+        Some(edad) => println!("Su edad es: {:?}", edad),
+        None => {},
+    }
 }
